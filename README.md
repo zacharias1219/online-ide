@@ -1,36 +1,167 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **SaaS Code Editor - CodeCraft**
 
-## Getting Started
+This project features the creation of **CodeCraft**, an advanced online IDE inspired by **VS Code**. It allows users to write, execute, and share code snippets across multiple programming languages with secure payment integration.
 
-First, run the development server:
+---
+
+## **Features**
+
+- **Multi-Language Support**:
+  - Supports **10 programming languages**.
+  - Free plan users can execute JavaScript code.
+  - Paid plan unlocks Python, Java, Go, C++, and more.
+
+- **Secure Payments**:
+  - Lifetime access through **Lemon Squeezy** integration.
+
+- **Snippet Sharing**:
+  - Users can share, star, and comment on code snippets.
+  - Snippets can be filtered, searched, and viewed in grid or list formats.
+
+- **Real-Time Updates**:
+  - Built with **Convex** for a seamless, real-time experience.
+
+- **Interactive Profile Dashboard**:
+  - Tracks code executions, favorite snippets, and usage statistics.
+
+---
+
+## **Tech Stack**
+
+- **Frontend**: Next.js (v15) with TailwindCSS
+- **Backend**: Convex for real-time database and serverless functions
+- **Authentication**: Clerk for user management and secure authentication
+- **Payments**: Lemon Squeezy for encrypted payment processing
+- **Editor**: Monaco Editor for a VS Code-like experience
+
+---
+
+## **Directory Structure**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── app
+│   ├── components
+│   ├── pages
+│   ├── services
+│   ├── styles
+│   └── utils
+├── convex
+│   ├── schema
+│   └── http
+├── constants
+├── types
+├── public
+│   └── assets
+├── prisma
+│   └── schema.prisma
+├── README.md
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## **Setup and Installation**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### **Prerequisites**
 
-## Learn More
+1. **Node.js**: Version 16 or above.
+2. **Convex Account**: Sign up at [Convex](https://convex.dev).
+3. **Clerk API Key**: Obtain from [Clerk](https://clerk.dev).
+4. **Lemon Squeezy API Key**: Set up payments via [Lemon Squeezy](https://www.lemonsqueezy.com).
 
-To learn more about Next.js, take a look at the following resources:
+### **Steps**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   git clone https://github.com/yourusername/codecraft.git
+   cd codecraft
+   ```
 
-## Deploy on Vercel
+2. Install dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Set up environment variables:
+   - Create a `.env.local` file in the root directory and include:
+
+     ```env
+     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_next_public_clerk
+     CLERK_SECRET_KEY=your_clerk_secret_key
+     CONVEX_DEPLOYMENT=your_convex_deployment_key
+     NEXT_PUBLIC_CONVEX_URL=your_public_convex_url
+     ```
+
+4. Initialize Convex:
+
+   ```bash
+   npx convex dev
+   ```
+
+5. Run the application:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Access the app at `http://localhost:3000`.
+
+---
+
+## **How It Works**
+
+### **Core Workflow**
+
+1. **User Authentication**:
+   - Secure login and sign-up via Clerk.
+   - Supports Google and GitHub authentication.
+
+2. **Real-Time Updates**:
+   - Convex database ensures real-time sharing and updates of code snippets.
+
+3. **Code Execution**:
+   - Runs user-written code with error messages or success outputs.
+
+4. **Snippet Sharing**:
+   - Allows creating, sharing, and starring snippets within a community.
+
+5. **Payment Integration**:
+   - Lemon Squeezy manages secure payments for upgrading to the Pro plan.
+
+---
+
+## **Deployment**
+
+1. **Build for Production**:
+
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy**:
+   - Host the app on Vercel or AWS.
+   - Configure `.env` for the production environment.
+
+---
+
+## **Future Enhancements**
+
+- Add advanced editor features such as code linting.
+- Support team collaboration for shared projects.
+- Include AI-powered code suggestions.
+
+---
+
+## **Contributing**
+
+Contributions are welcome! Please fork the repository, create a feature branch, and submit a pull request.
+
+---
+
+## **License**
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
